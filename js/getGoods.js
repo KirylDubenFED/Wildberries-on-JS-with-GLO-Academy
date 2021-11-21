@@ -5,23 +5,23 @@ const getGoods = () => {
     fetch('https://willdberiess-default-rtdb.firebaseio.com/db.json')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        const array = data.filter((item) => {
+          return item.gender === 'Womens'
+        })
+
+        localStorage.setItem('goods', JSON.stringify(array))
       })
   }
 
   links.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault()
+
+      
       getdata()
     })
   })
-
-  localStorage.setItem('goods', JSON.stringify({ name: 'all' }))
-
-  const goods = JSON.parse(localStorage.getItem('goods'))
-
-
-localStorage.removeItem('goods')
 }
 
 getGoods()
+
