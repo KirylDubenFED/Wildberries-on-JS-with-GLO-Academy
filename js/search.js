@@ -52,3 +52,6 @@ const search = () => {
 }
 
 search()
+
+
+// https://jsonplaceholder.typicode.com/posts

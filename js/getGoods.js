@@ -1,9 +1,11 @@
 const getGoods = () => {
   const links = document.querySelectorAll('.navigation-link')
+  const more = document.querySelector('.more')
+
   const renderGoods = (goods) => {
     const goodsContainer = document.querySelector('.long-goods-list')
 
-goodsContainer.innerHTML = ""
+    goodsContainer.innerHTML = ""
 
     goods.forEach(good => {
       const goodBlock = document.createElement('div')
@@ -22,10 +24,7 @@ goodsContainer.innerHTML = ""
 						</button>
 					</div>
    `
-goodsContainer.append(goodBlock)
-
-console.log(good);
-
+      goodsContainer.append(goodBlock)
     })
   }
 
@@ -60,6 +59,14 @@ console.log(good);
   if (localStorage.getItem('goods') && window.location.pathname === "/goods.html") {
     renderGoods(JSON.parse(localStorage.getItem('goods')))
   }
+
+ if (more) {
+   more.addEventListener('click', () => {
+     event.preventDefault()
+
+     getdata()
+   })
+ }
 }
 
 getGoods()
